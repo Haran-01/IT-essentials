@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Errander</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <h1>Erranders</h1>
+        <p>'Good service is good business'</p>
+    </header>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#login">Login</a>
+        <a href="#review">Review</a>
+    </nav>
+    <div id="container">
+        <aside class="sidebar">
+            <h3>Services</h3>
+            <a href="#Go-ride" class="service-link">Go Ride🚴🏻</a>
+            <a href="#Go-food" class="service-link">Go Food🥘</a>
+            <a href="#Go-parcel" class="service-link">Go Parcel📦</a>
+        </aside>
+        <main class="content">
+            <section id="services">
+                <div id="Go-ride" class="service">
+                    <h2>Go Ride</h2>
+                    <p>Quick, affordable rides across town with trusted drivers.</p>
+                </div>
+                <div id="Go-food" class="service">
+                    <h2>Go Food</h2>
+                    <p>Delicious meals delivered to your doorstep in minutes.</p>
+                </div>
+                <div id="Go-parcel" class="service">
+                    <h2>Go Parcel</h2>
+                    <p>Send packages swiftly and securely with our reliable courier partners.</p>
+                </div>
+            </section>
+            <section id="pricing">
+                <h2>Our pricing</h2>
+                <div id="basic" class="service show">
+                    <h3>Basic Plan - ₹499/month</h3>
+                    <p>5 rides, 10km range, within 2hrs.</p>
+                    <a href="#" class="btn">Choose Plan</a>
+                </div>
+                <div id="advanced" class="service show">
+                    <h3>Advanced Plan - ₹999/month</h3>
+                    <p>20 rides, 20km range, within 1hr.</p>
+                    <a href="#" class="btn">Choose Plan</a>
+                </div>
+                <div id="premium" class="service show">
+                    <h3>Premium Plan - ₹1999/month</h3>
+                    <p>30 rides, 30km range, within 30min.</p>
+                    <a href="#" class="btn">Choose Plan</a>
+                </div>
+            </section>
+            <section id="login">
+                <h2>Login</h2>
+                <form class="service show">
+                    <input type="email" placeholder="Email" required><br><br>
+                    <input type="password" placeholder="Password" required><br><br>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </section>
+
+            <section id="review">
+                <h2>What Our Customers Say</h2>
+                <div class="container1">
+                  <div class="service show">
+                    <p>"Erranders made my life easier — rides, food, parcels, all in one app!"</p>
+                    <h4>- Sanjai</h4>
+                  </div>
+                  <div class="service show">
+                    <p>"Reliable service and friendly drivers. Highly recommend it to everyone!"</p>
+                    <h4>- Priya</h4>
+                  </div>
+                </div>
+              </section>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; Erranders 2025. All rights reserved.</p>
+        <div>
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a> |
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+    <script>
+        const serviceLinks = document.querySelectorAll('.service-link');
+        const services = document.querySelectorAll('#services .service');
+
+        serviceLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove active from all
+                serviceLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                // Hide all services
+                services.forEach(service => {
+                    service.classList.remove('show');
+                });
+
+                // Show selected service
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.classList.add('show');
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (button.closest('form')) return;
+                e.preventDefault();
+                alert('Thank you for choosing Erranders! We will contact you shortly.');
+            });
+        });
+
+        // Hide all services at start except on Pricing/Login/Signup
+        window.addEventListener('DOMContentLoaded', () => {
+            services.forEach(service => service.classList.remove('show'));
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
